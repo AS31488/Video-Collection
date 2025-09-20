@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Collection</title>
+    <style>
+      body{
+    align-content:center;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.black-bar {
+    border: none;
+    height: 8px;
+    background: #000;
+    margin: 16px 0;
+    width: 100%;
+    display: block;
+}
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Classic Video Collection</h1>
+        <h2>By:Adam Hopkins</h2>
+        <hr class="black-bar">
+       <main>
+        <section>
+            <h1>Interpol</h1>
+            <video controls width="640" height="360" poster="Images\Social_Sharing_Image.webp" aria-label="Sample video">
+                <source src="Media\Interpol\Interpol - Obstacle 1 - InterpolVEVO (1080p, h264, youtube).mp4" type="video/mp4">
+                <source src="Images\4e601e32c2b94585b4f4e9d77d485735.webp" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+            <figcaption>A demonstration video using semantic HTML5.</figcaption>
+                <hr class="black-bar">
+        </section>
+    </main>
+    </section>
+    <script>
+      const videos = [
+    {
+        src: "Interpol - Obstacle 1 - InterpolVEVO (1080p, h264, youtube).mp4",
+        type: "video/mp4",
+        poster: "Social_Sharing_Image.webp",
+        caption: "Interpol - Obstacle 1"
+    },
+    {
+        src: "Interpol - NYC - InterpolVEVO (1080p, h264, youtube).mp4",
+        type: "video/mp4",
+        poster: "4e601e32c2b94585b4f4e9d77d485735.webp",
+        caption: "Interpol - NYC"
+    },
+    {
+        src: "Interpol - Slow Hands - InterpolVEVO (1080p, h264, youtube).mp4",
+        type: "video/mp4",
+        poster: "4e601e32c2b94585b4f4e9d77d485735.webp",
+        caption: "Interpol - Slow Hands"
+    },
+     {
+        src: "Interpol - The Heinrich Maneuver - InterpolVEVO (480p, h264, youtube).mp4",
+        type: "video/mp4",
+        poster: "Social_Sharing_Image.webp",
+        caption: "Interpol - Obstacle 1"
+    },
+    {
+        src: "Interpol - No I In Threesome - InterpolVEVO (360p, h264, youtube).mp4",
+        type: "video/mp4",
+        poster: "4e601e32c2b94585b4f4e9d77d485735.webp",
+        caption: "Interpol - No I In Threesome"
+    },
+    {
+        src: "Interpol - All The Rage Back Home - InterpolVEVO (1080p, h264, youtube).mp4",
+        type: "video/mp4",
+        poster: "4e601e32c2b94585b4f4e9d77d485735.webp",
+        caption: "Interpol - All The Rage Back Home"
+    },
+    {
+        src: "Interpol - Say Hello to the Angels (Official Audio) - Interpol (1080p, h264, youtube).mp4",
+        type: "video/mp4",
+        poster: "4e601e32c2b94585b4f4e9d77d485735.webp",
+        caption: "Interpol - Say Hello to the Angels"   
+    }
+    
+];
+
+function getRandomVideo() {
+    return videos[Math.floor(Math.random() * videos.length)];
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const video = document.querySelector('video');
+    const figcaption = document.querySelector('figcaption');
+    const randomVideo = getRandomVideo();
+
+    // Remove all <source> elements
+    while (video.firstChild) {
+        video.removeChild(video.firstChild);
+    }
+
+    // Add new <source>
+    const source = document.createElement('source');
+    source.src = randomVideo.src;
+    source.type = randomVideo.type;
+    video.appendChild(source);
+
+    // Update poster
+    video.poster = randomVideo.poster;
+
+    // Update caption
+    if (figcaption) {
+        figcaption.textContent = randomVideo.caption;
+    }
+
+    // Load the new video
+    video.load();
+});
+
+    </script>
+</body>
+</html>
